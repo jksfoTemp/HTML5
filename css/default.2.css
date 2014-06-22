@@ -33,6 +33,6 @@ p:nth-child(4n+1) {
 }
 
 :not(.child0){
-    color: pink;
+    color: red;
 }
 
