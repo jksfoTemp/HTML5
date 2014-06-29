@@ -45,6 +45,61 @@ body  {
     /* RGB, offset to left and right, offset up and down, amountof gradient, optional layout */
 }
 
+#box4 {
+    display:  box;
+    width: 500px;
+    margin: 50px auto;
+    padding: 15px;
+    text-align: center;
+    border: 7px solid blue;
+    background: yellow;
+    border-radius: 20px;
+    outline: 7px dotted red;
+}
+
+#box5 {
+    display:  box;
+    width: 500px;
+    margin: 50px auto;
+    padding: 15px;
+    text-align: center;
+    border: 7px solid blue;
+    background: yellow;
+    border-radius: 20px;
+    outline: 7px dotted red;
+    /*-webkit-transform:scale(1.5);
+    -webkit-transform:scale(1, 3);
+    -webkit-transform:scale(-1,1);*/
+    -webkit-transform:rotate(45deg);
+}
+
+
+#box6 {
+    display:  box;
+    width: 500px;
+    margin: 50px auto;
+    padding: 15px;
+    text-align: center;
+    border: 7px solid blue;
+    background: yellow;
+    border-radius: 20px;
+    outline: 7px dotted red;
+    -webkit-transform:skew(45deg);
+}
+
+#box7 {
+    display:  box;
+    width: 500px;
+    margin: 50px auto;
+    padding: 15px;
+    text-align: center;
+    border: 7px solid blue;
+    background: yellow;
+    border-radius: 20px;
+    outline: 7px dotted red;
+    -webkit-transform:translate(255px, 80px) rotate(30deg) scale(.34);
+}
+
 #text{
     font: bold 30px Century Gothic;
     text-shadow: rgb(110, 110, 110) 3px 3px 5px ;
