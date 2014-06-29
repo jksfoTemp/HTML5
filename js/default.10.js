@@ -16,7 +16,6 @@ function getStuff(){
     }
 }
 
-
 function talk(){
     alert('hi');
 }
