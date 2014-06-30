@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />    
-    <title>Default 11,  Video, js event listeners; session 28, 29, 30, 31, 32; 4:12:35</title>
+    <title>Default 11, Custom Video Tag, js event listeners; Need to add in namespacing; session 28, 29, 30, 31, 32; 4:12:35</title>
     <link rel="stylesheet" href="css/default.11.css" />
     <script type="text/javascript" src="js/default.11.js"></script>
 </head>
@@ -11,17 +11,25 @@
     <div id="big_wrapper">
         
         <section id="skin">
-            <video width="640" height="360" id="myMovie" >
-                <source src="video/VfE_html5.mp4" />
-                
+            <!-- some other attributes: autoplay loop > -->
+            <video width="640" height="360" id="myMovie" 
+                poster="images/smiley-face.jpg" preload="auto" >
+                <!-- <source src="video/VfE_html5.mp4" /> -->
+                <source src="video/small.mp4" />
             </video>
             <nav>
+
                 <div id="buttons">
                     <button type="button" id="playButton">Play</button>
                 </div>
+                <div id="buttons">
+                    <button type="button" id="volumeUp">Vol +</button>
+                </div>
+                <div id="buttons">
+                    <button type="button" id="volumeDown">Vol -</button>
+                </div>
                 <div id="defaultBar">
                     <div id="progressBar" >
-                        
                     </div>
                 </div>
                 <div style="clear:both;">
@@ -29,18 +37,8 @@
                 
             </nav>
         </section>
-        
         <hr />
-    
-        <!-- some other attributes: autoplay loop 
-        <video src="video/small.mp4" controls
-            width="440" height="200" 
-            poster="http://cache2.asset-cache.net/gc/171623449-burger-cropped-gettyimages.jpg?v=1&c=IWSAsset&k=2&d=czkdVXGy3drJxtcVvFveuwHct1ukaGILQDgcN0L3z2nWQlRfi3HGASdnJ36hf9%2fZ"
-        >
-        </video>
-        -->
     </div>
-    
 </body>
 
 </html>
