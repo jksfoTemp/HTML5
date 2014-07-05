@@ -1,14 +1,8 @@
 
-// window.onload=alert('in js file');
-console.log('in js file');
+// console.log('in js file');
 
-// Using the module pattern to avoid polluting the global scope
-// var customVideoTag = ( function () {
-
-
-// var customVideoTag = {
-    // These should be of local scope instead of global but it is such a 
-    // simple page ... perhaps namespace them ... 
+// Using the IIFE pattern to avoid polluting the global scope
+( function () {
     var barSize; 
     var myMovie; 
     var playButton;
@@ -18,7 +12,8 @@ console.log('in js file');
     var volumeUp; 
     
     function doFirst(){
-        barSize = 485; /* Change this to the declared CSS width property */
+        
+        barSize = 0; 
         myMovie = document.getElementById ('myMovie');
         playButton = document.getElementById ('playButton');
         defaultBar = document.getElementById ('defaultBar');
@@ -26,11 +21,26 @@ console.log('in js file');
         volumeDown = document.getElementById ('volumeDown');
         volumeUp = document.getElementById ('volumeUp'); 
     
-        playButton.addEventListener('click', playOrPause, false);
+        myMovie.addEventListener('click', playOrPause, false);
         defaultBar.addEventListener('click', clickedBar, false);
         playButton.addEventListener('click', playOrPause, false);
         volumeDown.addEventListener('click', volDown, false);
         volumeUp.addEventListener('click', volUp, false);
+        
+        // Get the width of the progress bar 
+        var padding = window.getComputedStyle(defaultBar, null).getPropertyValue('padding-left');
+        var border = window.getComputedStyle(defaultBar, null).getPropertyValue('border-width');
+        var width = defaultBar.offsetWidth; 
+        barSize = width + (padding*2) + (border*2); 
+        
+        /*
+        console.log('defaultBar width: ' + defaultBar.offsetWidth 
+            + '  defaultBar clientWidth: ' + defaultBar.clientWidth
+            + '  defaultBar clientLeft: ' + defaultBar.clientLeft
+            + '  foo: ' + padding 
+            + '  bar: ' + border
+            );
+        */
     }
     
     function playOrPause (){
@@ -47,8 +57,9 @@ console.log('in js file');
     }
     
     function update (){
-        console.log ('myMovie.ended: ' + myMovie.ended)
+        // console.log ('myMovie.ended: ' + myMovie.ended);
         if (!myMovie.ended){
+            
             var size=parseInt((myMovie.currentTime * barSize)/myMovie.duration, 10); 
             // console.log ('size: ' + size);
             progressBar.style.width = size + 'px';
@@ -61,7 +72,7 @@ console.log('in js file');
     }
     
     function clickedBar (e){
-        console.log('myMovie.paused: ' + myMovie.paused + ' myMovie.ended: ' + myMovie.ended);
+        // console.log('myMovie.paused: ' + myMovie.paused + ' myMovie.ended: ' + myMovie.ended);
         
         if (!myMovie.paused && !myMovie.ended) {
             var mouseX = e.pageX - defaultBar.offsetLeft;
@@ -73,7 +84,7 @@ console.log('in js file');
     
     function volDown (){
         // even if it is not playing ...
-        console.log('volDown(): ' + Math.floor(myMovie.volume * 10));
+        // console.log('volDown(): ' + Math.floor(myMovie.volume * 10));
         // prevent rounding errors
         if (Math.floor(myMovie.volume * 10) > 0){
             myMovie.volume -= 0.1;
@@ -82,16 +93,16 @@ console.log('in js file');
     
     function volUp (){
         // even if it is not playing ...
-        console.log('volUp(): ' + Math.floor(myMovie.volume * 10));
+        // console.log('volUp(): ' + Math.floor(myMovie.volume * 10));
         if (Math.floor(myMovie.volume * 10) < 10){
             myMovie.volume += 0.1;
         }
     }
 
-// }
+    window.addEventListener ('load', doFirst, false); 
+    // window.addEventListener ('onready', doFirst, false); 
+})();
 
-// window.addEventListener ('load', customVideoTag.doFirst, false); 
-window.addEventListener ('load', doFirst, false); 
 
-
+    
 
