@@ -28,19 +28,19 @@
         volumeUp.addEventListener('click', volUp, false);
         
         // Get the width of the progress bar 
-        var padding = window.getComputedStyle(defaultBar, null).getPropertyValue('padding-left');
-        var border = window.getComputedStyle(defaultBar, null).getPropertyValue('border-width');
+        var padding = window.getComputedStyle(defaultBar, null).getPropertyValue('padding-left').replace('px', '');
+        var border = window.getComputedStyle(defaultBar, null).getPropertyValue('border-width').replace('px', '');
         var width = defaultBar.offsetWidth; 
-        barSize = width + (padding*2) + (border*2); 
-        
+
         /*
         console.log('defaultBar width: ' + defaultBar.offsetWidth 
             + '  defaultBar clientWidth: ' + defaultBar.clientWidth
             + '  defaultBar clientLeft: ' + defaultBar.clientLeft
-            + '  foo: ' + padding 
-            + '  bar: ' + border
+            + '  padding: ' + padding 
+            + '  border: ' + border
             );
         */
+        barSize = width - (padding*2) - (border*2); 
     }
     
     function playOrPause (){
@@ -100,7 +100,6 @@
     }
 
     window.addEventListener ('load', doFirst, false); 
-    // window.addEventListener ('onready', doFirst, false); 
 })();
 
 
