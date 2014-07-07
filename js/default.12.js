@@ -4,7 +4,7 @@
 // Using the IIFE pattern to avoid polluting the global scope
 ( function () {
     
-    function doFirst(){
+    function doFirst(){ // canvas1
         // Note that the order in which these occur is important
         // Drawing and gradients 
         var obj = document.getElementById('canvas1'); 
@@ -35,7 +35,7 @@
         canvas1.strokeText("yuppersyuppersyuppers", 200, 100); 
     }
 
-    function doSecond (){
+    function doSecond (){ // canvas2
         // Text and Shadows
         var obj = document.getElementById('canvas2'); 
         var canvas2 = obj.getContext('2d');
@@ -51,7 +51,7 @@
         canvas2.fillText("Some Fill Text", 300, 100)
     }
 
-    function doThird (){
+    function doThird (){ // canvas3
         // Transformations - translate, rotate, scale
         var obj = document.getElementById('canvas3'); 
         var canvas3 = obj.getContext('2d');
@@ -68,12 +68,30 @@
         
         canvas3.scale (1.5, 4);
         canvas3.fillText("after scale", 40, -10)
+    }
+
+    function doFourth (){ // canvas4
+        // Transformations - translate, rotate, scale
+        var obj = document.getElementById('canvas4'); 
+        var canvas4 = obj.getContext('2d');
         
+        canvas4.font = "bold 22px Tahoma";
+        canvas4.textAlign = "start"; 
+        
+        // save initial state 
+        canvas4.save();
+        canvas4.fillText("After initial save", 10, 30)
+        canvas4.rotate(1); 
+        canvas4.fillText("After rotation", 60, 10)
+        
+        canvas4.restore();
+        canvas4.fillText("After restoration", 10, 30)
     }
 
     window.addEventListener ('load', doFirst, false); 
     window.addEventListener ('load', doSecond, false); 
     window.addEventListener ('load', doThird, false); 
+    window.addEventListener ('load', doFourth, false); 
 })();
 
 
