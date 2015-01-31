@@ -1,56 +1,27 @@
 
-// console.log('in js file');
+// window.onload=alert('in js file');
+console.log('in js file');
 
-// Using the IIFE pattern to avoid polluting the global scope
-( function () {
+function getStuff(){
+    // gets only first instance
+    document.querySelector('#tuna').onclick=talk;
     
-    var someImage; // = document.getElementById('someImage');
-    var leftBox; // = document.getElementById('leftBox');
-    // var code = '<img scr="./images/smiley-face.jpg">';
-    var code = '<img scr="smiley-face.jpg" > </img>';
-        
-    function doFirst(){ // 
-        someImage = document.getElementById('someImage');
-        someImage.addEventListener('dragstart', startDrag, false); 
-        someImage.addEventListener('dragend', endDrag, false); 
-
-        leftBox = document.getElementById('leftBox');
-        // The following allows for consistent browser behaviour
-        leftBox.addEventListener('dragenter', dragEnter/*function(e){e.preventDefault();}*/, false); 
-        leftBox.addEventListener('dragleave', dragLeave/*function(e){e.preventDefault();}*/, false); 
-        leftBox.addEventListener('dragover', function(e){e.preventDefault();}, false); 
-        leftBox.addEventListener('drop', dropped, false); 
+    // gets list/array of all matching elements 
+    var list = document.querySelectorAll('#bacon');
+    // assign fn to last element
+    list[1].onclick = talk2;
+    // assign fn to all elements
+    for (var i=0; i<list.length; i++) {
+        list[i].onclick = talk2;
     }
-    
-    function startDrag (e) {
-        console.log(code);
-        e.dataTransfer.setData('Text', code);
-    }
+}
 
-    function dragEnter (e) {
-        e.dataTransfer.setData('Text', code);
-    }
+function talk(){
+    alert('hi');
+}
 
-    function dragLeave (e) {
-        e.dataTransfer.setData('Text', code);
-    }
+function talk2(){
+    alert('bye');
+}
 
-    function endDrag (e) {
-        console.log(code);
-        var pic = e.target;
-        pic.style.visibility = 'hidden'; 
-    }
-
-    function dropped (e) {
-        console.log(code);
-        e.preventDefault();
-        leftBox.innerHTML = e.dataTransfer.getData('Text');
-    }
-
-    window.addEventListener ('load', doFirst, false); 
-
-})();
-
-
-    
-
+window.onload=getStuff;
