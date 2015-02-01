@@ -31,18 +31,17 @@
 
         <p></p>
         <h1>Note: watch the protocols on the includes</h1>
-        <h2>numbers, strings, objects and arrays; repeat</h2>
-        <div data-ng-app="" 
-            data-ng-init="firstName='John';lastName='Doe'; 
+        <h3>numbers, strings, objects and arrays; repeat, expressions, directives, 
+        controllers, filters</h3>
+        <div data-ng-app="" data-ng-init="firstName='John';lastName='Doe'; 
                 quantity=10;cost=5;
                 person={firstName:'Larry',lastName:'Barry'};
                 points=[1,15,19,2,40];
                 names=[
                 {name:'Jani',country:'Norway'},
                 {name:'Hege',country:'Sweden'},
-                {name:'Kai',country:'Denmark'}]" 
-            data-ng-controller="personController">
-            
+                {name:'Kai',country:'Denmark'}]" data-ng-controller="personController">
+
             <p>The name is <span data-ng-bind="firstName"></span>
             </p>
 
@@ -74,9 +73,20 @@
             </ul>
 
         </div>
+        <hr />
+        <H4>Filters</H4>
 
+        <div ng-app="" ng-controller="personController">
 
-        <script src="../js/angularTuteController.js" ></script>
+            <p>The last name is {{ lastName | uppercase }}</p>
+            <p>The first name is {{ firstName | lowercase }}</p>
+            <p>Total = {{ (quantity * cost) | currency }}</p>
+            
+            <p>The last name is {{ lastName | uppercase }}</p>
+
+        </div>
+
+    <script src="../js/angularTuteController.js"></script>
 
     </div>
 </body>
